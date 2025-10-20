@@ -1,0 +1,11 @@
+services:
+  e2e:
+    build: . # Usa o Dockerfile nesta pasta
+    image: bootcamp/ext-e2e:latest
+    environment:
+      - CI=true
+    volumes:
+      - ./:/app # Mapeia a pasta local para a pasta do container
+    working_dir: /app
+    command: npm run test:e2e 
+    shm_size: 2gb  # Essencial para o Chromium funcionar
